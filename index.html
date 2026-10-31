@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="ElegantVLA learns when to think for efficient Vision-Language-Action models.">
+  <meta name="keywords" content="ElegantVLA, VLA, Robotics, Efficient Inference">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ElegantVLA: Learning When to Think for Efficient Vision-Language-Action Models</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css?v=20260528-cache2">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css?v=20260528-cache2">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css?v=20260528-cache2">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css?v=20260528-cache2">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css?v=20260729-outcomes1">
+  <link rel="icon" href="./static/images/favicon.svg?v=20260528-cache2">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js?v=20260528-cache2"></script>
+  <script src="./static/js/bulma-carousel.min.js?v=20260528-cache2"></script>
+  <script src="./static/js/bulma-slider.min.js?v=20260528-cache2"></script>
+  <script src="./static/js/index.js?v=20260528-cache2"></script>
+</head>
+<body>
+
+<nav class="navbar project-navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item project-brand" href="#top">
+      ElegantVLA
+    </a>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-end project-nav-links">
+      <a class="navbar-item" href="#abstract">
+        Abstract
+      </a>
+      <a class="navbar-item" href="#framework">
+        Framework
+      </a>
+      <a class="navbar-item" href="#results">
+        Results
+      </a>
+      <a class="navbar-item" href="#visualizations">
+        Visualizations
+      </a>
+      <a class="navbar-item" href="#bibtex">
+        BibTeX
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero" id="top">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            <span class="title-accent">ElegantVLA</span>
+            <span class="title-subline">Learning When to Think for Efficient Vision-Language-Action Models</span>
+          </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="https://childtang.github.io/" target="_blank" rel="noopener noreferrer">Ye Li</a><sup>1</sup>,</span>
+            <span class="author-block">Huanan Liu<sup>1</sup>,</span>
+            <span class="author-block">Kangye Ji<sup>1</sup>,</span>
+            <span class="author-block"><a href="https://mengyuan404.github.io/" target="_blank" rel="noopener noreferrer">Yuan Meng</a><sup>1*</sup>,</span>
+            <span class="author-block">Jiajun Fan<sup>2</sup>,</span>
+            <span class="author-block">Yuansong Wang<sup>1</sup>,</span>
+            <span class="author-block">Shiyu Qin<sup>1</sup>,</span>
+            <span class="author-block">Chenglei Wu<sup>1</sup>,</span>
+            <span class="author-block"><a href="https://www.sigs.tsinghua.edu.cn/xst/main.psp" target="_blank" rel="noopener noreferrer">Shu-Tao Xia</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://mmlab-sigs.github.io/groups/zwang/" target="_blank" rel="noopener noreferrer">Zhi Wang</a><sup>1*</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Tsinghua University</span>&nbsp;&nbsp;
+            <span class="author-block"><sup>2</sup>University of Illinois Urbana-Champaign</span>
+          </div>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>*</sup>Corresponding authors</span>
+          </div>
+
+          <div class="is-size-5 publication-venue-line">
+            <strong>NeurIPS 2026</strong>
+          </div>
+
+          <div class="publication-links">
+            <span class="link-block">
+              <a href="https://arxiv.org/abs/2605.29438" target="_blank" rel="noopener noreferrer"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="ai ai-arxiv"></i></span>
+                <span>arXiv</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://arxiv.org/pdf/2605.29438" target="_blank" rel="noopener noreferrer"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                <span>Paper</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://github.com/ChildTang/ElegantVLA" target="_blank" rel="noopener noreferrer"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>Code</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="#bibtex" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-quote-right"></i></span>
+                <span>BibTeX</span>
+              </a>
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Vision-Language-Action (VLA) models have emerged as a powerful paradigm for generalist
+            robotic control. However, their high computational cost and limited control frequency
+            hinder real-time manipulation, especially when large vision-language backbones and
+            iterative action heads are executed at every control step. Existing acceleration
+            methods mainly rely on static compression or input-level reduction, overlooking the
+            non-uniform reasoning demands of sequential embodied control.
+          </p>
+          <p>
+            ElegantVLA is a plug-in phase-adaptive inference framework that accelerates VLA models
+            through intra-model dynamic compute scheduling. A lightweight scheduler observes
+            temporal representation similarity and robot states, then jointly allocates computation
+            across the vision encoder, LLM, and action head. For perception-language reasoning, it
+            selects among full computation, partial recomputation, and temporal reuse; for action
+            generation, it reuses intermediate action-head states during stable motion while
+            retaining full computation for precision-sensitive stages.
+          </p>
+          <p>
+            Extensive experiments on GR00T, CogACT, and real-world tasks show that ElegantVLA
+            preserves or improves task success while substantially accelerating inference. It
+            achieves up to 2.55x average speedup on GR00T and 3.77x average speedup on CogACT. In
+            GR00T-based real-world experiments across six tasks, it reduces computation by 2.18x
+            and increases control frequency from 13.8 Hz to 26.3 Hz.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section" id="featured-comparisons">
+  <div class="container is-max-desktop">
+    <div class="video-grid comparison-video-grid">
+      <div class="video-card">
+        <h2 class="title is-5">Roll Can</h2>
+        <div class="comparison-labels">
+          <span>Original</span>
+          <span>ElegantVLA</span>
+        </div>
+        <video class="comparison-video" controls autoplay muted loop playsinline preload="metadata" data-playback-rate="1" width="100%">
+          <source src="./assets/videos/compare/can_placement_compare.mp4?v=20260803-rollcan10-left085-repaired" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-card">
+        <h2 class="title is-5">Tennis on Conveyor</h2>
+        <div class="comparison-labels">
+          <span>Original</span>
+          <span>ElegantVLA</span>
+        </div>
+        <video class="comparison-video" controls autoplay muted loop playsinline preload="metadata" data-playback-rate="1" width="100%">
+          <source src="./assets/videos/compare/tennis_conveyor_compare.mp4?v=20260803-original-speed-swapped" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="framework">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Framework</h2>
+        <div class="content has-text-centered figure-panel">
+          <img src="./assets/images/framework.webp?v=20260507-figs2"
+               alt="ElegantVLA framework overview."
+               width="1800"
+               height="1013">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="results">
+  <div class="container is-max-desktop">
+
+    <!-- Results. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Experimental Results</h2>
+        <p class="results-intro">
+          Detailed task-level results are grouped by benchmark for easier inspection.
+        </p>
+
+        <div class="results-tabs" role="tablist" aria-label="Experimental result tables">
+          <button type="button" class="results-tab-button is-active" data-tab-target="results-cogact" role="tab" aria-selected="true" aria-controls="results-cogact">CogACT</button>
+          <button type="button" class="results-tab-button" data-tab-target="results-groot" role="tab" aria-selected="false" aria-controls="results-groot">GR00T</button>
+          <button type="button" class="results-tab-button" data-tab-target="results-real" role="tab" aria-selected="false" aria-controls="results-real">Real Robot</button>
+        </div>
+
+        <div class="results-tab-shell">
+          <div id="results-cogact" class="results-tab-panel is-active" role="tabpanel">
+            <p class="metric-format"><strong>Cell format:</strong> success rate / FLOPs speedup.</p>
+            <div class="results-table-panel">
+              <h3 class="title is-5">CogACT Visual Matching results</h3>
+              <div class="results-table-scroll">
+                <table class="table is-striped is-hoverable is-fullwidth is-size-7">
+                  <thead>
+                    <tr>
+                      <th>Method</th>
+                      <th>PickCan</th>
+                      <th>MoveNear</th>
+                      <th>Drawer</th>
+                      <th>PutDrawer</th>
+                      <th>Avg.</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>CogACT</td>
+                      <td>91.30 / 1.00</td>
+                      <td>85.00 / 1.00</td>
+                      <td>71.80 / 1.00</td>
+                      <td>50.90 / 1.00</td>
+                      <td>74.80 / 1.00</td>
+                    </tr>
+                    <tr>
+                      <td>Random Dropping</td>
+                      <td>9.70 / 1.20</td>
+                      <td>20.40 / 1.20</td>
+                      <td>53.50 / 1.20</td>
+                      <td>0.00 / 1.20</td>
+                      <td>20.90 / 1.20</td>
+                    </tr>
+                    <tr>
+                      <td>FastV</td>
+                      <td>82.67 / 1.31</td>
+                      <td>72.92 / 1.31</td>
+                      <td>66.67 / 1.28</td>
+                      <td>46.30 / 1.30</td>
+                      <td>67.14 / 1.30</td>
+                    </tr>
+                    <tr>
+                      <td>VLA-Cache</td>
+                      <td>87.33 / 1.47</td>
+                      <td>77.92 / 1.46</td>
+                      <td>69.44 / 1.44</td>
+                      <td>47.22 / 1.47</td>
+                      <td>70.48 / 1.46</td>
+                    </tr>
+                    <tr>
+                      <td>MoLe-VLA</td>
+                      <td>86.40 / 1.53</td>
+                      <td>80.20 / 1.53</td>
+                      <td>70.60 / 1.53</td>
+                      <td>50.40 / 1.53</td>
+                      <td>71.90 / 1.53</td>
+                    </tr>
+                    <tr>
+                      <td>ElegantVLA</td>
+                      <td>89.67 / 3.32</td>
+                      <td>80.42 / 3.05</td>
+                      <td>89.35 / 4.10</td>
+                      <td>50.93 / 4.41</td>
+                      <td>77.59 / 3.72</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="results-table-panel">
+              <h3 class="title is-5">CogACT Variant Aggregation results</h3>
+              <div class="results-table-scroll">
+                <table class="table is-striped is-hoverable is-fullwidth is-size-7">
+                  <thead>
+                    <tr>
+                      <th>Method</th>
+                      <th>PickCan</th>
+                      <th>MoveNear</th>
+                      <th>Drawer</th>
+                      <th>PutDrawer</th>
+                      <th>Avg.</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>CogACT</td>
+                      <td>89.60 / 1.00</td>
+                      <td>80.80 / 1.00</td>
+                      <td>28.30 / 1.00</td>
+                      <td>46.60 / 1.00</td>
+                      <td>61.30 / 1.00</td>
+                    </tr>
+                    <tr>
+                      <td>Random Dropping</td>
+                      <td>4.00 / 1.20</td>
+                      <td>16.10 / 1.20</td>
+                      <td>15.60 / 1.20</td>
+                      <td>0.00 / 1.20</td>
+                      <td>8.90 / 1.20</td>
+                    </tr>
+                    <tr>
+                      <td>FastV</td>
+                      <td>76.00 / 1.29</td>
+                      <td>71.67 / 1.29</td>
+                      <td>24.34 / 1.26</td>
+                      <td>47.62 / 1.26</td>
+                      <td>54.91 / 1.28</td>
+                    </tr>
+                    <tr>
+                      <td>VLA-Cache</td>
+                      <td>80.00 / 1.47</td>
+                      <td>75.00 / 1.45</td>
+                      <td>30.69 / 1.43</td>
+                      <td>43.39 / 1.43</td>
+                      <td>57.27 / 1.45</td>
+                    </tr>
+                    <tr>
+                      <td>MoLe-VLA</td>
+                      <td>89.20 / 1.49</td>
+                      <td>79.50 / 1.49</td>
+                      <td>29.90 / 1.49</td>
+                      <td>46.20 / 1.49</td>
+                      <td>61.20 / 1.49</td>
+                    </tr>
+                    <tr>
+                      <td>ElegantVLA</td>
+                      <td>82.30 / 3.32</td>
+                      <td>77.17 / 3.26</td>
+                      <td>73.54 / 4.34</td>
+                      <td>57.14 / 4.15</td>
+                      <td>72.54 / 3.77</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div id="results-groot" class="results-tab-panel" role="tabpanel">
+            <p class="metric-format"><strong>Cell format:</strong> success rate / FLOPs speedup.</p>
+            <div class="results-table-panel">
+              <h3 class="title is-5">GR00T Google Robot main comparison results</h3>
+              <div class="results-table-scroll">
+                <table class="table is-striped is-hoverable is-fullwidth is-size-7">
+                  <thead>
+                    <tr>
+                      <th>Method</th>
+                      <th>CloseD</th>
+                      <th>MoveNear</th>
+                      <th>OpenD</th>
+                      <th>PickCan</th>
+                      <th>PickObj</th>
+                      <th>PlaceD</th>
+                      <th>Avg.</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>GR00T</td>
+                      <td>82.00 / 1.00</td>
+                      <td>92.00 / 1.00</td>
+                      <td>49.50 / 1.00</td>
+                      <td>99.50 / 1.00</td>
+                      <td>92.50 / 1.00</td>
+                      <td>11.00 / 1.00</td>
+                      <td>71.08 / 1.00</td>
+                    </tr>
+                    <tr>
+                      <td>FastV</td>
+                      <td>80.00 / 1.13</td>
+                      <td>88.00 / 1.13</td>
+                      <td>64.00 / 1.13</td>
+                      <td>94.00 / 1.13</td>
+                      <td>88.00 / 1.13</td>
+                      <td>12.00 / 1.13</td>
+                      <td>71.00 / 1.13</td>
+                    </tr>
+                    <tr>
+                      <td>VLA-Cache</td>
+                      <td>72.00 / 1.13</td>
+                      <td>90.00 / 1.13</td>
+                      <td>62.00 / 1.13</td>
+                      <td>94.00 / 1.13</td>
+                      <td>84.00 / 1.13</td>
+                      <td>10.00 / 1.13</td>
+                      <td>68.67 / 1.13</td>
+                    </tr>
+                    <tr>
+                      <td>ElegantVLA</td>
+                      <td>81.00 / 2.39</td>
+                      <td>95.50 / 1.90</td>
+                      <td>74.50 / 2.31</td>
+                      <td>98.00 / 2.35</td>
+                      <td>88.50 / 2.59</td>
+                      <td>12.50 / 2.39</td>
+                      <td>75.00 / 2.35</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="results-table-panel">
+              <h3 class="title is-5">GR00T WidowX+Bridge main comparison results</h3>
+              <div class="results-table-scroll">
+                <table class="table is-striped is-hoverable is-fullwidth is-size-7">
+                  <thead>
+                    <tr>
+                      <th>Method</th>
+                      <th>Carrot</th>
+                      <th>CloseD</th>
+                      <th>OpenD</th>
+                      <th>Basket</th>
+                      <th>Sink</th>
+                      <th>Spoon</th>
+                      <th>Stack</th>
+                      <th>Avg.</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>GR00T</td>
+                      <td>60.50 / 1.00</td>
+                      <td>98.50 / 1.00</td>
+                      <td>93.00 / 1.00</td>
+                      <td>37.50 / 1.00</td>
+                      <td>37.50 / 1.00</td>
+                      <td>71.50 / 1.00</td>
+                      <td>7.00 / 1.00</td>
+                      <td>57.93 / 1.00</td>
+                    </tr>
+                    <tr>
+                      <td>FastV</td>
+                      <td>58.00 / 1.13</td>
+                      <td>98.00 / 1.13</td>
+                      <td>84.00 / 1.13</td>
+                      <td>22.00 / 1.13</td>
+                      <td>30.00 / 1.13</td>
+                      <td>74.00 / 1.13</td>
+                      <td>12.00 / 1.13</td>
+                      <td>54.00 / 1.13</td>
+                    </tr>
+                    <tr>
+                      <td>VLA-Cache</td>
+                      <td>72.00 / 1.13</td>
+                      <td>98.00 / 1.13</td>
+                      <td>84.00 / 1.13</td>
+                      <td>24.00 / 1.13</td>
+                      <td>24.00 / 1.13</td>
+                      <td>72.00 / 1.13</td>
+                      <td>12.00 / 1.13</td>
+                      <td>53.14 / 1.13</td>
+                    </tr>
+                    <tr>
+                      <td>ElegantVLA</td>
+                      <td>63.50 / 2.58</td>
+                      <td>99.50 / 2.54</td>
+                      <td>85.00 / 2.56</td>
+                      <td>31.50 / 2.52</td>
+                      <td>41.00 / 2.57</td>
+                      <td>72.50 / 2.55</td>
+                      <td>13.50 / 2.55</td>
+                      <td>58.07 / 2.55</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div id="results-real" class="results-tab-panel" role="tabpanel">
+            <div class="results-table-panel">
+              <h3 class="title is-5">Trial-level success counts</h3>
+              <div class="results-table-scroll">
+                <table class="table is-striped is-hoverable is-fullwidth is-size-7">
+                  <thead>
+                    <tr>
+                      <th>Method</th>
+                      <th>Phone</th>
+                      <th>Pen</th>
+                      <th>Bowls</th>
+                      <th>Pineapple</th>
+                      <th>Toast</th>
+                      <th>Chocolate</th>
+                      <th>Total</th>
+                      <th>Rate</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Full GR00T</td>
+                      <td>6/10</td>
+                      <td>7/10</td>
+                      <td>4/10</td>
+                      <td>7/10</td>
+                      <td>7/10</td>
+                      <td>6/10</td>
+                      <td>37/60</td>
+                      <td>61.67%</td>
+                    </tr>
+                    <tr>
+                      <td>ElegantVLA</td>
+                      <td>6/10</td>
+                      <td>7/10</td>
+                      <td>4/10</td>
+                      <td>8/10</td>
+                      <td>8/10</td>
+                      <td>6/10</td>
+                      <td>39/60</td>
+                      <td>65.00%</td>
+                    </tr>
+                    <tr>
+                      <td>Improvement</td>
+                      <td>+0</td>
+                      <td>+0</td>
+                      <td>+0</td>
+                      <td>+1</td>
+                      <td>+1</td>
+                      <td>+0</td>
+                      <td>+2</td>
+                      <td>+3.33 pp</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="results-table-panel">
+              <h3 class="title is-5">Latency breakdown</h3>
+              <div class="results-table-scroll">
+                <table class="table is-striped is-hoverable is-fullwidth is-size-7">
+                  <thead>
+                    <tr>
+                      <th>Task</th>
+                      <th>Success</th>
+                      <th>Full GR00T</th>
+                      <th>ElegantVLA</th>
+                      <th>Reduction</th>
+                      <th>Latency speedup</th>
+                      <th>FLOPs speedup</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Phone-on-Stand</td>
+                      <td>60.0%</td>
+                      <td>72.31 ms</td>
+                      <td>37.70 ms</td>
+                      <td>47.9%</td>
+                      <td>1.92x</td>
+                      <td>2.18x</td>
+                    </tr>
+                    <tr>
+                      <td>Pen-to-Holder</td>
+                      <td>70.0%</td>
+                      <td>71.74 ms</td>
+                      <td>36.20 ms</td>
+                      <td>49.5%</td>
+                      <td>1.98x</td>
+                      <td>2.24x</td>
+                    </tr>
+                    <tr>
+                      <td>Stack-Bowls</td>
+                      <td>40.0%</td>
+                      <td>71.92 ms</td>
+                      <td>41.30 ms</td>
+                      <td>42.6%</td>
+                      <td>1.74x</td>
+                      <td>2.01x</td>
+                    </tr>
+                    <tr>
+                      <td>Pineapple Bun</td>
+                      <td>80.0%</td>
+                      <td>72.74 ms</td>
+                      <td>35.70 ms</td>
+                      <td>50.9%</td>
+                      <td>2.04x</td>
+                      <td>2.31x</td>
+                    </tr>
+                    <tr>
+                      <td>Toast</td>
+                      <td>80.0%</td>
+                      <td>72.88 ms</td>
+                      <td>37.40 ms</td>
+                      <td>48.7%</td>
+                      <td>1.95x</td>
+                      <td>2.21x</td>
+                    </tr>
+                    <tr>
+                      <td>Chocolate Bun</td>
+                      <td>60.0%</td>
+                      <td>73.05 ms</td>
+                      <td>39.70 ms</td>
+                      <td>45.7%</td>
+                      <td>1.84x</td>
+                      <td>2.11x</td>
+                    </tr>
+                    <tr>
+                      <td>Average</td>
+                      <td>65.0%</td>
+                      <td>72.44 ms</td>
+                      <td>38.00 ms</td>
+                      <td>47.5%</td>
+                      <td>1.91x</td>
+                      <td>2.18x</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!--/ Results. -->
+
+
+    <!-- Visualizations. -->
+    <div class="columns is-centered" id="visualizations">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Visualizations</h2>
+
+        <h3 class="title is-4">Real-world video comparisons</h3>
+        <div class="video-grid comparison-video-grid" id="real-videos">
+          <div class="video-card">
+            <h3 class="title is-5">Phone on Stand</h3>
+            <div class="comparison-labels">
+              <span>GR00T Original</span>
+              <span>ElegantVLA</span>
+            </div>
+            <video class="comparison-video" controls autoplay muted loop playsinline preload="metadata" data-playback-rate="1" width="100%">
+              <source src="./assets/videos/compare/placephone_compare.mp4?v=20260528-pauseframes1" type="video/mp4">
+            </video>
+          </div>
+          <div class="video-card">
+            <h3 class="title is-5">Pen Holder</h3>
+            <div class="comparison-labels">
+              <span>GR00T Original</span>
+              <span>ElegantVLA</span>
+            </div>
+            <video class="comparison-video" controls autoplay muted loop playsinline preload="metadata" data-playback-rate="1" width="100%">
+              <source src="./assets/videos/compare/insertpen_compare.mp4?v=20260528-pauseframes1" type="video/mp4">
+            </video>
+          </div>
+          <div class="video-card">
+            <h3 class="title is-5">Stack Bowls</h3>
+            <div class="comparison-labels">
+              <span>GR00T Original</span>
+              <span>ElegantVLA</span>
+            </div>
+            <video class="comparison-video" controls autoplay muted loop playsinline preload="metadata" data-playback-rate="1" width="100%">
+              <source src="./assets/videos/compare/stackbowls_compare.mp4?v=20260528-pauseframes1" type="video/mp4">
+            </video>
+          </div>
+          <div class="video-card">
+            <h3 class="title is-5">Pineapple Bun</h3>
+            <div class="comparison-labels">
+              <span>GR00T Original</span>
+              <span>ElegantVLA</span>
+            </div>
+            <video class="comparison-video" controls autoplay muted loop playsinline preload="metadata" data-playback-rate="1" width="100%">
+              <source src="./assets/videos/compare/bun_compare.mp4?v=20260528-pauseframes1" type="video/mp4">
+            </video>
+          </div>
+          <div class="video-card">
+            <h3 class="title is-5">Toast</h3>
+            <div class="comparison-labels">
+              <span>GR00T Original</span>
+              <span>ElegantVLA</span>
+            </div>
+            <video class="comparison-video" controls autoplay muted loop playsinline preload="metadata" data-playback-rate="1" width="100%">
+              <source src="./assets/videos/compare/toast_compare.mp4?v=20260528-pauseframes1" type="video/mp4">
+            </video>
+          </div>
+          <div class="video-card">
+            <h3 class="title is-5">Chocolate Bun</h3>
+            <div class="comparison-labels">
+              <span>GR00T Original</span>
+              <span>ElegantVLA</span>
+            </div>
+            <video class="comparison-video" controls autoplay muted loop playsinline preload="metadata" data-playback-rate="1" width="100%">
+              <source src="./assets/videos/compare/chocolate_compare.mp4?v=20260528-pauseframes1" type="video/mp4">
+            </video>
+          </div>
+        </div>
+
+        <h3 class="title is-4">Task-level simulation scheduling rollouts</h3>
+        <div class="visual-scroll-row simulation-scroll-row">
+          <figure class="paper-result-item visual-scroll-card">
+            <img src="./assets/images/closed_vis.webp?v=20260528-sim13"
+                 alt="Google Robot Place in Closed Drawer scheduling visualization."
+                 width="1200"
+                 height="662"
+                 loading="lazy">
+            <figcaption>Google Robot: Place in Closed Drawer</figcaption>
+          </figure>
+          <figure class="paper-result-item visual-scroll-card">
+            <img src="./assets/images/googleclose_vis.webp?v=20260528-sim13"
+                 alt="Google Robot Close Drawer scheduling visualization."
+                 width="1200"
+                 height="662"
+                 loading="lazy">
+            <figcaption>Google Robot: Close Drawer</figcaption>
+          </figure>
+          <figure class="paper-result-item visual-scroll-card">
+            <img src="./assets/images/movenear_vis.webp?v=20260528-sim13"
+                 alt="Google Robot Move Near scheduling visualization."
+                 width="1200"
+                 height="661"
+                 loading="lazy">
+            <figcaption>Google Robot: Move Near</figcaption>
+          </figure>
+          <figure class="paper-result-item visual-scroll-card">
+            <img src="./assets/images/googleopen_vis.webp?v=20260528-sim13"
+                 alt="Google Robot Open Drawer scheduling visualization."
+                 width="1200"
+                 height="661"
+                 loading="lazy">
+            <figcaption>Google Robot: Open Drawer</figcaption>
+          </figure>
+          <figure class="paper-result-item visual-scroll-card">
+            <img src="./assets/images/pickcan_vis.webp?v=20260528-sim13"
+                 alt="Google Robot Pick Coke Can scheduling visualization."
+                 width="1200"
+                 height="661"
+                 loading="lazy">
+            <figcaption>Google Robot: Pick Coke Can</figcaption>
+          </figure>
+          <figure class="paper-result-item visual-scroll-card">
+            <img src="./assets/images/pickobj_vis.webp?v=20260528-sim13"
+                 alt="Google Robot Pick Object scheduling visualization."
+                 width="1200"
+                 height="662"
+                 loading="lazy">
+            <figcaption>Google Robot: Pick Object</figcaption>
+          </figure>
+          <figure class="paper-result-item visual-scroll-card">
+            <img src="./assets/images/carrot_vis.webp?v=20260528-sim13"
+                 alt="WidowX Carrot on Plate scheduling visualization."
+                 width="1200"
+                 height="661"
+                 loading="lazy">
+            <figcaption>WidowX+Bridge: Carrot on Plate</figcaption>
+          </figure>
+          <figure class="paper-result-item visual-scroll-card">
+            <img src="./assets/images/widowxclose_vis.webp?v=20260528-sim13"
+                 alt="WidowX Close Drawer scheduling visualization."
+                 width="1200"
+                 height="662"
+                 loading="lazy">
+            <figcaption>WidowX+Bridge: Close Drawer</figcaption>
+          </figure>
+          <figure class="paper-result-item visual-scroll-card">
+            <img src="./assets/images/widowxopen_vis.webp?v=20260528-sim13"
+                 alt="WidowX Open Drawer scheduling visualization."
+                 width="1200"
+                 height="662"
+                 loading="lazy">
+            <figcaption>WidowX+Bridge: Open Drawer</figcaption>
+          </figure>
+          <figure class="paper-result-item visual-scroll-card">
+            <img src="./assets/images/eggbasket_vis.webp?v=20260528-sim13"
+                 alt="WidowX Eggplant in Basket scheduling visualization."
+                 width="1200"
+                 height="661"
+                 loading="lazy">
+            <figcaption>WidowX+Bridge: Eggplant in Basket</figcaption>
+          </figure>
+          <figure class="paper-result-item visual-scroll-card">
+            <img src="./assets/images/eggsink_vis.webp?v=20260528-sim13"
+                 alt="WidowX Eggplant in Sink scheduling visualization."
+                 width="1200"
+                 height="662"
+                 loading="lazy">
+            <figcaption>WidowX+Bridge: Eggplant in Sink</figcaption>
+          </figure>
+          <figure class="paper-result-item visual-scroll-card">
+            <img src="./assets/images/spoon_vis.webp?v=20260528-sim13"
+                 alt="WidowX Spoon on Towel scheduling visualization."
+                 width="1200"
+                 height="662"
+                 loading="lazy">
+            <figcaption>WidowX+Bridge: Spoon on Towel</figcaption>
+          </figure>
+          <figure class="paper-result-item visual-scroll-card">
+            <img src="./assets/images/cube_vis.webp?v=20260528-sim13"
+                 alt="WidowX Stack Cube scheduling visualization."
+                 width="1200"
+                 height="661"
+                 loading="lazy">
+            <figcaption>WidowX+Bridge: Stack Cube</figcaption>
+          </figure>
+        </div>
+
+      </div>
+    </div>
+    <!--/ Visualizations. -->
+
+  </div>
+</section>
+
+<section class="section" id="bibtex">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">BibTeX</h2>
+    <pre><code>@inproceedings{li2026elegantvla,
+  title={ElegantVLA: Learning When to Think for Efficient Vision-Language-Action Models},
+  author={Li, Ye and Liu, Huanan and Ji, Kangye and Meng, Yuan and Fan, Jiajun and Wang, Yuansong and Qin, Shiyu and Wu, Chenglei and Xia, Shu-Tao and Wang, Zhi},
+  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
+  year={2026}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Project page maintained by <a href="https://childtang.github.io/" target="_blank" rel="noopener noreferrer">Ye Li</a>.
+            This website uses source code adapted from the <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies project page</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
