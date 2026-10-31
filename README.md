@@ -26,10 +26,10 @@ Code will be released in this repository. Stay tuned.
 ## Citation
 
 ```bibtex
-@inproceedings{li2026elegantvla,
+@article{li2026elegantvla,
   title={ElegantVLA: Learning When to Think for Efficient Vision-Language-Action Models},
   author={Li, Ye and Liu, Huanan and Ji, Kangye and Meng, Yuan and Fan, Jiajun and Wang, Yuansong and Qin, Shiyu and Wu, Chenglei and Xia, Shu-Tao and Wang, Zhi},
-  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
+  journal={arXiv preprint arXiv:2605.29438},
   year={2026}
 }
 ```
