@@ -1,0 +1,14 @@
+diff --git a/mani_skill2_real2sim/envs/sapien_env.py b/mani_skill2_real2sim/envs/sapien_env.py
+index 25fbbe1..06b22c8 100644
+--- a/mani_skill2_real2sim/envs/sapien_env.py
++++ b/mani_skill2_real2sim/envs/sapien_env.py
+@@ -113,7 +113,8 @@ class BaseEnv(gym.Env):
+                     viewer_shader_dir="rt",
+                     rt_samples_per_pixel=32,
+                     rt_max_path_depth=8,
+-                    rt_use_denoiser=True,
++                    rt_use_denoiser=os.getenv("MS2_RT_USE_DENOISER", "0").lower()
++                    in {"1", "true", "yes"},
+                 )
+             else:
+                 _render_config = dict(

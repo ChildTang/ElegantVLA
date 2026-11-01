@@ -1,0 +1,34 @@
+{
+  "description": "ElegantVLA scheduler for GR00T-N1.6 on SimplerEnv Google Robot (MaskablePPO)",
+  "base_model": "GR00T-N1.6-fractal",
+  "observation": ["feature_similarity", "eef_translation_speed", "eef_rotation_speed", "gripper_speed", "step_progress"],
+  "task_group": "google_all",
+  "schedule_mode": "episode",
+  "episodes_per_update": 12,
+  "ppo": {
+    "learning_rate": 0.0001,
+    "batch_size": 128,
+    "n_epochs": 4,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_range": 0.2,
+    "ent_coef": 0.0,
+    "vf_coef": 0.5,
+    "max_grad_norm": 0.5,
+    "seed": 0
+  },
+  "rule_thresholds": {
+    "gate_threshold": 0.95,
+    "free1_similarity_threshold": 0.98,
+    "free2_similarity_threshold": 0.99,
+    "free3_similarity_threshold": 0.995,
+    "action_head_cache_selection": "motion_speed_inner",
+    "ah_speed_threshold": 0.005,
+    "ah_secondary_threshold": 0.05
+  },
+  "env": {
+    "max_episode_steps": 300,
+    "n_action_steps": 1,
+    "steps_per_render": 2
+  }
+}

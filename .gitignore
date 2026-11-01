@@ -1,2 +1,24 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.idea/
+.vscode/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
 .DS_Store
-**/.DS_Store
+/build/
+/dist/
+*.egg-info/
+/data/
+/outputs/
+/results/
+/wandb/
+*.log
+
+# Only the released scheduler checkpoint is tracked.
+checkpoints/*
+!checkpoints/gr00t/
+checkpoints/gr00t/*
+!checkpoints/gr00t/google_robot/

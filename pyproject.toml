@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "elegantvla"
+version = "0.1.0"
+description = "Phase-adaptive inference scheduling for vision-language-action models (GR00T-N1.6 backend)"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+# Model, simulator and PyTorch dependencies come from the Isaac-GR00T environment.
+dependencies = [
+    "stable-baselines3>=2.7,<2.9",
+    "sb3-contrib>=2.7,<2.9",
+    "gymnasium>=1.0",
+    "tyro",
+]
+
+[tool.setuptools.packages.find]
+include = ["elegantvla*"]
+namespaces = false
