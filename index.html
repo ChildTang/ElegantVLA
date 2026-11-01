@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css?v=20260528-cache2">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css?v=20260729-outcomes1">
+  <link rel="stylesheet" href="./static/css/index.css?v=20261101-code1">
   <link rel="icon" href="./static/images/favicon.svg?v=20260528-cache2">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -53,8 +53,14 @@
       <a class="navbar-item" href="#visualizations">
         Visualizations
       </a>
+      <a class="navbar-item" href="#code">
+        Code
+      </a>
       <a class="navbar-item" href="#bibtex">
         BibTeX
+      </a>
+      <a class="navbar-item" href="https://github.com/ChildTang/ElegantVLA" target="_blank" rel="noopener noreferrer" aria-label="ElegantVLA on GitHub">
+        <span class="icon"><i class="fab fa-github"></i></span>
       </a>
     </div>
 
@@ -74,9 +80,9 @@
           <div class="is-size-5 publication-authors">
             <span class="author-block"><a href="https://childtang.github.io/" target="_blank" rel="noopener noreferrer">Ye Li</a><sup>1</sup>,</span>
             <span class="author-block">Huanan Liu<sup>1</sup>,</span>
-            <span class="author-block">Kangye Ji<sup>1</sup>,</span>
+            <span class="author-block"><a href="https://ky-ji.github.io/" target="_blank" rel="noopener noreferrer">Kangye Ji</a><sup>1</sup>,</span>
             <span class="author-block"><a href="https://mengyuan404.github.io/" target="_blank" rel="noopener noreferrer">Yuan Meng</a><sup>1*</sup>,</span>
-            <span class="author-block">Jiajun Fan<sup>2</sup>,</span>
+            <span class="author-block"><a href="https://www.jiajunfan.com/" target="_blank" rel="noopener noreferrer">Jiajun Fan</a><sup>2</sup>,</span>
             <span class="author-block">Yuansong Wang<sup>1</sup>,</span>
             <span class="author-block">Shiyu Qin<sup>1</sup>,</span>
             <span class="author-block">Chenglei Wu<sup>1</sup>,</span>
@@ -832,6 +838,36 @@
     </div>
     <!--/ Visualizations. -->
 
+  </div>
+</section>
+
+<section class="section" id="code">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">Code</h2>
+    <p>
+      The GR00T-N1.6 implementation, a trained scheduler for the SimplerEnv Google Robot
+      tasks, and the evaluation and two-stage training scripts are available at
+      <a href="https://github.com/ChildTang/ElegantVLA" target="_blank" rel="noopener noreferrer">github.com/ChildTang/ElegantVLA</a>.
+      Quick start:
+    </p>
+    <pre><code>git clone --recurse-submodules https://github.com/ChildTang/ElegantVLA.git
+cd ElegantVLA
+# set up the GR00T + SimplerEnv environment (see README), then:
+bash scripts/install_gr00t_integration.sh
+pip install -e .
+MODEL_PATH=/path/to/GR00T-N1.6-fractal bash elegantvla/gr00t/scripts/eval_google_robot.sh</code></pre>
+    <div class="code-links">
+      <a href="https://github.com/ChildTang/ElegantVLA" target="_blank" rel="noopener noreferrer"
+         class="external-link button is-normal is-rounded is-dark">
+        <span class="icon"><i class="fab fa-github"></i></span>
+        <span>GitHub Repository</span>
+      </a>
+      <a href="https://github.com/ChildTang/ElegantVLA#installation" target="_blank" rel="noopener noreferrer"
+         class="external-link button is-normal is-rounded is-light">
+        <span class="icon"><i class="fas fa-book"></i></span>
+        <span>Installation Guide</span>
+      </a>
+    </div>
   </div>
 </section>
 

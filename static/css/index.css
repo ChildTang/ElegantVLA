@@ -575,6 +575,31 @@ section {
   background: var(--accent-dark);
 }
 
+#code pre {
+  padding: 1.1rem 1.25rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 0.85rem;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.code-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.code-links .button.is-dark {
+  background: #27313f;
+}
+
+.code-links .button.is-dark:hover {
+  background: var(--accent-dark);
+}
+
 #bibtex pre {
   padding: 1.1rem 1.25rem;
   border: 1px solid #e5e7eb;
